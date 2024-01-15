@@ -12,7 +12,7 @@ import Tooltip from "@mui/material/Tooltip";
 import { AppRouter } from "../../consts/router";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import { useNavigate } from "react-router-dom";
-import { Menu, MenuItem } from "@mui/material";
+import { Link, Menu, MenuItem } from "@mui/material";
 import { useState } from "react";
 
 const LINKS = [
@@ -133,11 +133,6 @@ export default function Header() {
                                         sx={{
                                             mr: 2,
                                             display: { xs: "none", md: "flex" },
-                                            fontFamily: "monospace",
-                                            fontWeight: 600,
-
-                                            color: "inherit",
-                                            textDecoration: "none",
                                         }}
                                     >
                                         <GitHubIcon
@@ -149,7 +144,22 @@ export default function Header() {
                                                 mr: 1,
                                             }}
                                         />
-                                        GITHUB
+                                        <Link
+                                            href="https://github.com/Tatiana-Polonskaya/glossary"
+                                            sx={{
+                                                mr: 2,
+                                                display: {
+                                                    xs: "none",
+                                                    md: "flex",
+                                                },
+                                                fontFamily: "monospace",
+                                                fontWeight: 600,
+                                                color: "inherit",
+                                                textDecoration: "none",
+                                            }}
+                                        >
+                                            GITHUB
+                                        </Link>
                                     </Typography>
                                 </Container>
                             </Button>
