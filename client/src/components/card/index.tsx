@@ -20,10 +20,19 @@ export default function ActionAreaCard(props: Props) {
                     alt="green iguana"
                 /> */}
                 <CardContent>
-                    <Typography gutterBottom variant="h5" component="div">
+                    <Typography
+                        gutterBottom
+                        variant="h5"
+                        component="div"
+                        align="center"
+                    >
                         {props.data.label}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography
+                        variant="body2"
+                        color="text.secondary"
+                        align="justify"
+                    >
                         {props.data.desc}
                     </Typography>
                 </CardContent>

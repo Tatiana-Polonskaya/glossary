@@ -1,49 +1,43 @@
-import { useCallback, useState } from "react";
+import { useEffect, useState } from "react";
 import ReactFlow, {
-    applyEdgeChanges,
-    applyNodeChanges,
-    addEdge,
     MiniMap,
     Node,
     Edge,
     Controls,
     Background,
-    OnNodesChange,
-    OnEdgesChange,
-    OnConnect,
 } from "reactflow";
 import "reactflow/dist/style.css";
-import { initialEdges, initialNodes } from "../../consts/data";
+import { useGetEdgesQuery, useGetNodesQuery } from "../../store/term-api";
 
 function Flow() {
-    const [nodes, setNodes] = useState<Node[]>(initialNodes);
-    const [edges, setEdges] = useState<Edge[]>(initialEdges);
+    const [nodes, setNodes] = useState<Node[]>([]);
+    const [edges, setEdges] = useState<Edge[]>([]);
 
-    const onNodesChange: OnNodesChange = useCallback(
-        (changes) => setNodes((nds) => applyNodeChanges(changes, nds)),
-        [setNodes]
-    );
-    const onEdgesChange: OnEdgesChange = useCallback(
-        (changes) => setEdges((eds) => applyEdgeChanges(changes, eds)),
-        [setEdges]
-    );
-    const onConnect: OnConnect = useCallback(
-        (connection) => setEdges((eds) => addEdge(connection, eds)),
-        [setEdges]
-    );
+    const { data: initialNodes, isLoading: isLoadingNodes } =
+        useGetNodesQuery();
+    const { data: initialEdges, isLoading: isLoadingEdges } =
+        useGetEdgesQuery();
 
-    return (
-        <ReactFlow
-            nodes={nodes}
-            edges={edges}
-            onNodesChange={onNodesChange}
-            onEdgesChange={onEdgesChange}
-            onConnect={onConnect}
-        >
+    useEffect(() => {
+        if (initialNodes) {
+            setNodes(initialNodes);
+        }
+    }, [initialNodes]);
+
+    useEffect(() => {
+        if (initialEdges) {
+            setEdges(initialEdges);
+        }
+    }, [initialEdges]);
+
+    return !isLoadingNodes && !isLoadingEdges ? (
+        <ReactFlow nodes={nodes} edges={edges} fitView nodesDraggable={false}>
             <MiniMap />
             <Controls />
             <Background />
         </ReactFlow>
+    ) : (
+        <>Loading</>
     );
 }
 export default Flow;

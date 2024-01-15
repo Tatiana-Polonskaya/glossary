@@ -1,8 +1,8 @@
 import { Node } from "reactflow";
 import ActionAreaCard from "../card";
-import Container from "@mui/material/Container";
 import { useGetNodesQuery } from "../../store/term-api";
 import { useEffect, useState } from "react";
+import { Grid } from "@mui/material";
 
 export default function ListTerms() {
     const { data, isLoading } = useGetNodesQuery();
@@ -15,17 +15,20 @@ export default function ListTerms() {
     }, [data]);
 
     return !isLoading ? (
-        <Container
-            sx={{
-                display: "flex",
-                flexFlow: "row wrap",
-                gap: "20px",
-            }}
+        <Grid
+            container
+            spacing={4}
+            justifyContent="center"
+            alignItems="stretch"
         >
             {nodes &&
-                nodes.map((node) => <ActionAreaCard key={node.id} {...node} />)}
-        </Container>
+                nodes.map((node) => (
+                    <Grid item xs={4} md={3} key={node.id}>
+                        <ActionAreaCard {...node} />
+                    </Grid>
+                ))}
+        </Grid>
     ) : (
-        <>Loading</>
+        <>Loading...</>
     );
 }
