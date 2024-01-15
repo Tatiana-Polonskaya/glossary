@@ -3,7 +3,7 @@ import { Edge, Node } from "reactflow";
 
 export const termApi = createApi({
     reducerPath: "termApi",
-    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:80" }),
+    baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3000" }),
     endpoints: (builder) => ({
         getNodes: builder.query<Node[], void>({
             query: () => ({
@@ -19,5 +19,3 @@ export const termApi = createApi({
 });
 
 export const { useGetNodesQuery, useGetEdgesQuery } = termApi;
-
-
