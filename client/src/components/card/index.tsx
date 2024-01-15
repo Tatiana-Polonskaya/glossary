@@ -13,12 +13,6 @@ export default function ActionAreaCard(props: Props) {
     return (
         <Card sx={{ maxWidth: 300 }}>
             <CardActionArea>
-                {/* <CardMedia
-                    component="img"
-                    height="140"
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    alt="green iguana"
-                /> */}
                 <CardContent>
                     <Typography
                         gutterBottom
@@ -40,3 +34,7 @@ export default function ActionAreaCard(props: Props) {
         </Card>
     );
 }
+
+
+
+

@@ -1,5 +1,5 @@
 import { Typography } from "@mui/material";
-import ListTerms from "../../components/list-terms";
+import ListCards from "../../components/list-cards";
 import LayoutWithHeader from "../../layouts/with-header";
 
 export default function DictionaryPage() {
@@ -13,7 +13,7 @@ export default function DictionaryPage() {
             >
                 Глоссарий терминов ВКР
             </Typography>
-            <ListTerms />
+            <ListCards />
         </LayoutWithHeader>
     );
 }

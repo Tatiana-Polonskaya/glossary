@@ -4,7 +4,7 @@ import { useGetNodesQuery } from "../../store/term-api";
 import { useEffect, useState } from "react";
 import { Grid } from "@mui/material";
 
-export default function ListTerms() {
+export default function ListCards() {
     const { data, isLoading } = useGetNodesQuery();
     const [nodes, setNodes] = useState<Node[]>();
 
